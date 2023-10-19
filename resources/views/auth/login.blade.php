@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Log In / Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
@@ -16,8 +18,19 @@
             <div class="row full-height justify-content-center">
                 <div class="col-12 text-center align-self-center py-5">
                     <div class="section pb-5 pt-5 pt-sm-2 text-center">
-                       <!--     <h6 class="mb-0 pb-3"><span>Se connecter</span><span>S'inscrire</span></h6>
+                        <!--     <h6 class="mb-0 pb-3"><span>Se connecter</span><span>S'inscrire</span></h6>
                     <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />-->
+
+
+                        <x-validation-errors class="alert alert-dark mb-1" role="alert" />
+                        @if (session('status'))
+                    
+                            <div class="mb-1 font-medium text-sm text-green-60">
+                                {{ session('status') }}
+                            </div>
+                       
+                        @endif
+
                         <label for="reg-log"></label>
                         <div class="card-3d-wrap mx-auto">
                             <div class="card-3d-wrapper">
@@ -26,34 +39,32 @@
                                         <div class="section text-center">
                                             <h4 class="mb-4 pb-3">Se connecter</h4>
 
-                                            @if (session('status'))
-                                                <div class="mb-4 font-medium text-sm text-green-600">
-                                                    {{ session('status') }}
-                                                </div>
-                                            @endif
+
+
+
 
                                             <form method="POST" action="{{ route('login') }}">
                                                 @csrf
 
                                                 <div class="form-group">
                                                     <input type="email" name="email" class="form-style"
-                                                        placeholder="Entrez votre Email" id="logemail"
-                                                        autocomplete="off">
+                                                        placeholder="Entrez votre Email" id="email" autocomplete="off"
+                                                        required autofocus>
                                                     <i class="input-icon uil uil-at"></i>
                                                 </div>
                                                 <div class="form-group mt-2">
                                                     <input type="password" name="password" class="form-style"
                                                         placeholder="Entrez votre mot de passe" id="logpass"
-                                                        autocomplete="off">
+                                                        autocomplete="off" required>
                                                     <i class="input-icon uil uil-lock-alt"></i>
                                                 </div>
 
                                                 <button type="submit" class="btn mt-4">Se connecter</button>
                                             </form>
                                             @if (Route::has('password.request'))
-                                                <p class="mb-0 mt-4 text-center"><a
-                                                        href="{{ route('password.request') }}" class="link">Mot de
-                                                        passe oublié?</a></p>
+                                            <p class="mb-0 mt-4 text-center"><a href="{{ route('password.request') }}"
+                                                    class="link">Mot de
+                                                    passe oublié?</a></p>
                                             @endif
 
                                         </div>
