@@ -38,6 +38,7 @@ class AdminControlleur extends Controller
       $client = User::get();
       return view('admin.dashboard.home.user.ListeClient')->with('clients', $client);
    }
+/************///////////////////admin *////////////////
 
    public function login(Request $request)
    {
@@ -69,9 +70,25 @@ class AdminControlleur extends Controller
 
 
       ]);
-      return redirect()->route('login_from')->with('error', "L'administrateur a été creer avec succès");
+      return back()->with("status", "Votre Administrateur  a été crée avec succès");
+   }
+   public function ajouterAdminsateur()
+   {
+      return view('admin.dashboard.home.Adminsateur.AjouterAdminsateur');
+   }
+   public function infoAdminsateur($id)
+   {
+      $client = User::find($id);
+      return view('admin.dashboard.home.Adminsateur.infoAdminsateur')->with("client", $client);;
+   }
+   public function Adminsateur()
+   {
+      // $client = User::where('type', '=', 'client')->get();
+      $client = User::get();
+      return view('admin.dashboard.home.Adminsateur.ListeAdminsateur')->with('clients', $client);
    }
 
+//////////////////admin/////////////////////
    public function UserRegisterCreate(Request $request)
    {
       $this->validate($request, [

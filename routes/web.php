@@ -99,7 +99,15 @@ Route::prefix('admin')->group(function () {
     Route::get('admin/chat/rooms/{room:slug}', [RoomController::class, 'show'])->name('show');
     Route::post('admin/chat/rooms/{room:slug}', [RoomController::class, 'update'])->name('update');
     Route::post('admin/chat/rooms/{room:slug}/messages', [RoomController::class, 'store'])->name('store');
-
+   
+   //Supervieur 
+    Route::get('/admin/liste_Adminsateur', [AdminControlleur::class, 'Adminsateur'])->name('admin.Adminsateur');
+    Route::get('/admin/ajouterAdminsateur', [AdminControlleur::class, 'ajouterAdminsateur'])->name('admin.ajouterAdminsateur');
+    Route::delete('/admin/supprimerAdminsateur/{id}', [AdminControlleur::class, 'supprimerAdminsateur'])->name('supprimerClient');
+    Route::get('admin/modifierAdminsateur/{id}', [AdminControlleur::class, 'modifierAdminsateur'])->name('modifierAdminsateur');
+    Route::put('/admin/mise_a_jour_Adminsateur/{id}', [AdminControlleur::class, 'mise_a_jour_Adminsateur'])->name('mise_a_jour_Adminsateur');
+    Route::get('admin/infoAdminsateur/{id}', [AdminControlleur::class, 'infoAdminsateur'])->name('admin.infoAdminsateur');
+    Route::post('/register/createAdminsateur', [AdminControlleur::class, 'AdminRegisterCreate'])->name('admin.AdminRegisterCreate');
     // User
 
     Route::get('/admin/liste_client', [AdminControlleur::class, 'Client'])->name('admin.Client');

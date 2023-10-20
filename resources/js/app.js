@@ -10,27 +10,7 @@ import listPlugin from "@fullcalendar/list";
 window.Alpine = Alpine;
 
 Alpine.start();
-const chatDiv=document.getElementById('chat')
-const submitButton = document.getElementById("submitButton");
-submitButton.addEventListener("click", async () => {
 
-
-    try {
-        const name = 'document.getElementById("name").value';
-        const message = document.getElementById("message").value;
-        await axios.post("/chat", {
-            name: name,
-            message: message,
-        });
-        // Effectuez des actions supplémentaires en cas de succès si nécessaire
-    } catch (error) {
-        console.error("Erreur lors de l'envoi du message de chat : ", error);
-    }
-});
-window.Echo.channel("chat").listen(".chat-message", (event) => {
-    chatDiv.innerHTML +=`    <div  class="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">${event.message}</div>`
- });
- 
 document.addEventListener("DOMContentLoaded", async function () {
     const calendarEl = document.querySelector("#calendar");
 

@@ -71,6 +71,35 @@
             </li>
           </ul>
         </li>
+        <li
+          class="nav-item has-treeview {{request()->is('client')|| request()->is('admin/AjouterClient')?'menu-open' : ''}}">
+          <a href="#"
+            class="nav-link {{request()->is('client') || request()->is('admin/AjouterClient')?'active' : ''}}">
+            <i class="nav-icon fas fa-male"></i>
+            <p>
+            Adminsateur
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview ">
+            <li class="nav-item">
+              <a href={{ route('admin.ajouterAdminsateur') }}
+                class="nav-link  {{request()->is('admin/Adminsateur')?'active' : ''}}">
+                <i class="far fa-file nav-icon"></i>
+                <p>Ajouter un Adminsateur</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href={{ route('admin.Adminsateur') }}
+                class="nav-link  {{request()->is('admin/liste_Adminsateur')?'active' : ''}}">
+                <i class="far fa-file nav-icon"></i>
+                <p>Liste des Adminsateur</p>
+              </a>
+            </li>
+          </ul>
+        </li>
 
         <li
         class="nav-item has-treeview {{request()->is('tache')|| request()->is('admin/AjouterTache')?'menu-open' : ''}}">
